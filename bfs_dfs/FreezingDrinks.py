@@ -1,6 +1,6 @@
 import sys
 
-n, m = map(int , sys.stdin.readline())
+n, m = map(int, sys.stdin.readline())
 
 graph = []
 for i in range(n):
