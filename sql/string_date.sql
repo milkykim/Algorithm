@@ -1,0 +1,22 @@
+-- 루시와 엘라 찾기(이름이 'Lucy','Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty' 인 동물 조회)
+-- https://programmers.co.kr/learn/courses/30/lessons/59046
+SELECT ANIMAL_ID, NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+WHERE NAME IN('Lucy','Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
+ORDER BY ANIMAL_ID
+
+-- 이름에 'EL'이 들어가는 '개' 조회
+-- https://programmers.co.kr/learn/courses/30/lessons/59047?language=mysql
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE NAME LIKE '%EL%' AND ANIMAL_TYPE='Dog'
+ORDER BY NAME
+
+-- 중성화한 동물 O,X로 표기하기
+-- https://programmers.co.kr/learn/courses/30/lessons/59409?language=mysql
+-- REGEXP 함수 -> LIKE IN 합친 함수. 여러개의 문자열이 포함되어있는 행을 꺼내옴
+SELECT ANIMAL_ID, NAME, 
+CASE WHEN (SEX_UPON_INTAKE REGEXP 'Neutered|Spayed') THEN 'O'
+ELSE 'X' END AS "중성화"
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
