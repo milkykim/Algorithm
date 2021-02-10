@@ -31,6 +31,8 @@ string get_menu(string d)
         menu = "소불고기";
     } else if (strcmp(d, "일요일") == 0) {
         menu = "오삼불고기";
+    } else {
+        menu = "다시 시작하세요";
     }
 
     return menu;
