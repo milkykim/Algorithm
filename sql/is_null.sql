@@ -18,12 +18,10 @@ WHERE NAME IS NOT NULL
 -- https://programmers.co.kr/learn/courses/30/lessons/59410?language=mysql
 
 SELECT ANIMAL_TYPE, 
-(
-    CASE 
-    WHEN NAME IS NULL THEN 'No name'
-    ELSE NAME
-    END
-) AS NAME
-, SEX_UPON_INTAKE
+CASE
+    WHEN NAME IS NOT NULL THEN NAME
+    WHEN NAME IS NULL THEN "No name"
+END NAME, 
+SEX_UPON_INTAKE
 FROM ANIMAL_INS
 ORDER BY ANIMAL_ID
