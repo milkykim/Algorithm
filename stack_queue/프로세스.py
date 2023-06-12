@@ -2,18 +2,14 @@ from collections import deque
 
 
 def solution(priorities, location):
-    priorities = deque(priorities)
-    indexes = deque(list(i for i in range(0, len(priorities))))
-    answer = []
-    num_of_priorities = len(priorities)
+    idx_priorities = deque([(p, i) for i, p in enumerate(priorities)])
+    completed_process = []
 
-    while len(answer) < num_of_priorities:
-        p = priorities.popleft()
-        i = indexes.popleft()
-        if priorities and p < max(priorities):
-            priorities.append(p)
-            indexes.append(i)
+    while idx_priorities:
+        (p, i) = idx_priorities.popleft()
+        if idx_priorities and p < max(idx_priorities)[0]:
+            idx_priorities.append((p, i))
         else:
-            answer.append(i)
+            completed_process.append(i)
 
-    return answer.index(location) + 1
+    return completed_process.index(location) + 1
